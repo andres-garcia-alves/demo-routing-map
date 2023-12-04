@@ -1,7 +1,7 @@
 # Routing-Map
 
 A Routing-Map app, developed in Vue 3 + Typescript 4 + MapBox mapping services.  
-[LIVE DEMO HERE](https://andres-garcia-alves.github.io/game-funny-apps/magic-answer-game/dist/)  
+[LIVE DEMO HERE](https://andres-garcia-alves.github.io/demo-routing-map/dist/)  
 
 Current functionality:
 - 
