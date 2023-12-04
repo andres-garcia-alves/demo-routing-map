@@ -8,7 +8,7 @@ A Routing-Map app, developed in Vue 3 + Typescript 4 + MapBox mapping services.
 Current functionality:  
 - Find my location.
 - Search locations by name.
-- Routing between current locations an any selected search location result.
+- Routing between current location an any selected search location result.
 - Route distance (in kilometers) and duration (in minutes).
 - Maps 3D view.
 
