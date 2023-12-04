@@ -3,12 +3,16 @@
 A Routing-Map app, developed in Vue 3 + Typescript 4 + MapBox mapping services.  
 [LIVE DEMO HERE](https://andres-garcia-alves.github.io/demo-routing-map/dist/)  
 
+&nbsp;
+
 Current functionality:  
 - Find my location.
 - Search locations by name.
 - Routing between current locations an any selected search location result.
 - Route distance (in kilometers) and duration (in minutes).
 - Maps 3D view.
+
+&nbsp;
 
 Notes:  
 This website uses device's geolocation to work.
