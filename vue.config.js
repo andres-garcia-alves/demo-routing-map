@@ -4,7 +4,7 @@
  * @type {import('@vue/cli-service').ProjectOptions}
  */
 module.exports = {
-    publicPath: './dist',
+    publicPath: './',
     configureWebpack:{
         performance: {
           hints: false
