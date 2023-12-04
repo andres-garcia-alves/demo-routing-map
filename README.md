@@ -12,10 +12,7 @@ Current functionality:
 - Route distance (in kilometers) and duration (in minutes).
 - Maps 3D view.
 
-&nbsp;
-
-Notes:  
-This website uses device's geolocation to work.
+Notes: This website uses device's geolocation to work.
 
 &nbsp;
 
