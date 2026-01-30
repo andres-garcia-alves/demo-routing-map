@@ -5,7 +5,7 @@ import { StateInterface } from '../index';
 
 
 const getters: GetterTree<MapStateInterface, StateInterface> = {
-    getMapReady(state) {
+    getMapReady(state: MapStateInterface) {
         return !!state.map;
     }
 }

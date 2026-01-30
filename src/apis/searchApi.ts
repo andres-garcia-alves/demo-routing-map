@@ -1,10 +1,13 @@
 import axios from "axios";
-
+import { mapConfig } from "../config/mapConfig";
 
 const searchApi = axios.create({
-    baseURL: 'https://api.mapbox.com/geocoding/v5/mapbox.places',
+    baseURL: mapConfig.provider === 'mapbox' 
+        ? 'https://api.mapbox.com/geocoding/v5/mapbox.places'
+        : 'https://api.geoapify.com/v1/geocode',
     params: {
-        access_token: 'pk.eyJ1Ijoia2xlcml0aCIsImEiOiJja3hramV2OWIwbjEwMzFwYzJlZWl6N2g5In0.iKXPpYvo7UPRiiZ-x_lCrw',
+        access_token: mapConfig.provider === 'mapbox' ? mapConfig.accessToken : undefined,
+        apiKey: mapConfig.provider === 'geoapify' ? mapConfig.accessToken : undefined,
         language: 'es',
         limit: 5
     }

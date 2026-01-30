@@ -1,6 +1,6 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
-import Mapboxgl from "mapbox-gl";
+import Mapboxgl from "maplibre-gl";
 
 import { StateInterface } from "@/store";
 import { Feature } from "@/interfaces/places";

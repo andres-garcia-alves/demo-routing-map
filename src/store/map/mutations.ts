@@ -1,5 +1,5 @@
 import { MutationTree } from 'vuex';
-import Mapboxgl from 'mapbox-gl';
+import Mapboxgl from 'maplibre-gl';
 
 import { MapStateInterface } from './state';
 import { Feature } from '@/interfaces/places';
@@ -50,8 +50,10 @@ const mutation: MutationTree<MapStateInterface> = {
 
     setRoutePolyline(state: MapStateInterface, coords: number[][]) {
         
+        if (coords.length === 0 ) return;
+
         const start = coords[0];
-        // const end = coords[coords.length - 1];
+        if (!start || start.length < 2) return;
 
         // definir los bounds
         const bounds = new Mapboxgl.LngLatBounds(
@@ -69,7 +71,7 @@ const mutation: MutationTree<MapStateInterface> = {
         });
 
         // polyline
-        const sourceData: Mapboxgl.AnySourceData = {
+        const sourceData: Mapboxgl.SourceSpecification = {
             type: 'geojson',
             data: {
                 type: 'FeatureCollection',

@@ -1,5 +1,6 @@
 import { defineComponent, onMounted, ref, watch } from "vue";
-import Mapboxgl from 'mapbox-gl';
+import Mapboxgl from 'maplibre-gl';
+import { mapConfig } from "@/config/mapConfig";
 
 import { usePlacesStore, useMapStore } from "@/composables";
 
@@ -19,7 +20,10 @@ export default defineComponent({
             await Promise.resolve();
       
             const map = new Mapboxgl.Map({
-                container: mapElement.value, style: 'mapbox://styles/mapbox/light-v10', center: userLocation.value, zoom: 15
+                container: mapElement.value,
+                style: mapConfig.styleUrl,
+                center: userLocation.value,
+                zoom: 15
             });
       
             const locationPopup = new Mapboxgl.Popup()

@@ -1,14 +1,17 @@
 import axios from 'axios';
-
+import { mapConfig } from "../config/mapConfig";
 
 const directionsApi = axios.create({
-    baseURL: 'https://api.mapbox.com/directions/v5/mapbox/driving',
+    baseURL: mapConfig.provider === 'mapbox' 
+        ? 'https://api.mapbox.com/directions/v5/mapbox/driving'
+        : 'https://api.geoapify.com/v1/routing',
     params: {
-        access_token: 'pk.eyJ1Ijoia2xlcml0aCIsImEiOiJja3hramV2OWIwbjEwMzFwYzJlZWl6N2g5In0.iKXPpYvo7UPRiiZ-x_lCrw',
-        alternatives: false,
-        geometries: 'geojson',
-        overview: 'simplified',
-        steps: false
+        access_token: mapConfig.provider === 'mapbox' ? mapConfig.accessToken : undefined,
+        apiKey: mapConfig.provider === 'geoapify' ? mapConfig.accessToken : undefined,
+        alternatives: mapConfig.provider === 'mapbox' ? false : undefined,
+        geometries: mapConfig.provider === 'mapbox' ? 'geojson' : undefined,
+        overview: mapConfig.provider === 'mapbox' ? 'simplified' : undefined,
+        steps: mapConfig.provider === 'mapbox' ? false : undefined
     }
 });
 
