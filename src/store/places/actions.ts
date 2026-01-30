@@ -11,10 +11,10 @@ import { mapConfig } from "@/config/mapConfig";
 const actions: ActionTree<PlacesStateInterface, StateInterface> = {
 
     getInitialLocation({ commit }) {
-        // todo: loading
         navigator.geolocation.getCurrentPosition(
             (position) => { commit('setCurrentPosition', position.coords) },
-            (err) => { console.error(err); throw new Error('No geolocation.'); }
+            (err) => { console.error(err); throw new Error('No geolocation.'); },
+            { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
         );
     },
 
@@ -35,8 +35,6 @@ const actions: ActionTree<PlacesStateInterface, StateInterface> = {
             });
         } else {
              // Geoapify
-             // TODO: Need to check response types as well, Geoapify response structure is different from Mapbox
-             // But for now let's focus on the request.
              response = await searchApi.get<PlacesResponse>('/autocomplete', {
                  params: {
                      text: query,
@@ -49,7 +47,7 @@ const actions: ActionTree<PlacesStateInterface, StateInterface> = {
                  id: feature.properties.place_id,
                  text: feature.properties.name || feature.properties.formatted,
                  place_name: feature.properties.formatted,
-                 center: feature.geometry.coordinates, // Added missing center
+                 center: feature.geometry.coordinates,
                  geometry: feature.geometry,
                  properties: feature.properties
              })) as Feature[];
