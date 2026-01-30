@@ -1,7 +1,7 @@
-# Routing-Map
+# Travel Map
 
 A Routing-Map app, developed in Vue 3 + Typescript 4 + Geoapify/MapBox mapping services.  
-[LIVE DEMO HERE](https://andres-garcia-alves.github.io/demo-routing-map/)  
+[LIVE DEMO HERE](https://andres-garcia-alves.github.io/app-travel-map/)  
 
 &nbsp;
 
