@@ -1,7 +1,7 @@
 # Routing-Map
 
 A Routing-Map app, developed in Vue 3 + Typescript 4 + Geoapify/MapBox mapping services.  
-[LIVE DEMO HERE](https://andres-garcia-alves.github.io/demo-routing-map/dist/)  
+[LIVE DEMO HERE](https://andres-garcia-alves.github.io/demo-routing-map/)  
 
 &nbsp;
 
@@ -49,6 +49,8 @@ If you want to run this project then you need [Node.js](https://nodejs.org) inst
 ### Version History
 
 v1.0 (2023.12.03) - Initial release.  
+v1.1 (2023.12.29) - Adding Geoapify mapping support, changed WebPack to Vite.  
+v1.2 (2026.01.30) - Adding CI/CD.  
 
 &nbsp;
 
