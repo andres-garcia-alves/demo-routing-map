@@ -1,6 +1,6 @@
-export type MapProvider = 'mapbox' | 'geoapify';
+export type MapProvider = 'geoapify' | 'mapbox';
 
-const PROVIDER = (import.meta.env.VITE_MAP_PROVIDER as MapProvider) || 'mapbox';
+const PROVIDER = (import.meta.env.VITE_MAP_PROVIDER as MapProvider) || 'geoapify';
 
 interface Config {
     accessToken: string;
@@ -16,7 +16,7 @@ const getGeoapifyConfig = (): Config => {
             provider: 'geoapify',
             accessToken: apiKey,
             baseUrl: 'https://api.geoapify.com/v1',
-            styleUrl: `https://maps.geoapify.com/v1/styles/osm-bright/style.json?apiKey=${apiKey}`
+            styleUrl: `https://maps.geoapify.com/v1/styles/osm-liberty/style.json?apiKey=${apiKey}`
         };
     } catch (error) {
         console.error("Error loading Geoapify config", error);
