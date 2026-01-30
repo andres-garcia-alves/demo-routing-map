@@ -20,6 +20,7 @@ export const usePlacesStore: any = () => {
         userLocation: computed(() => store.state.places.userLocation),
         isLoadingPlaces: computed(() => store.state.places.isLoadingPlaces),
         places: computed(() => store.state.places.places),
+        hasError: computed(() => store.state.places.hasError),
         
         // getters
         getUserLocationIsReady: computed<boolean>(() => store.getters['places/getUserLocationIsReady']),

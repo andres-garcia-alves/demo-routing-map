@@ -1,6 +1,9 @@
 <template>
     <div v-if="!getUserLocationIsReady" class="loading-map d-flex justify-content-center align-items-center">
-        <div class="text-center">
+        <div v-if="hasError" class="text-center">
+            <h3>Sin geolocalización disponible</h3>
+        </div>
+        <div v-else class="text-center">
             <h3>Espere por favor</h3>
             <span>Localizando...</span>
         </div>

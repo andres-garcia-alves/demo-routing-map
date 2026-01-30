@@ -13,7 +13,11 @@ const actions: ActionTree<PlacesStateInterface, StateInterface> = {
     getInitialLocation({ commit }) {
         navigator.geolocation.getCurrentPosition(
             (position) => { commit('setCurrentPosition', position.coords) },
-            (err) => { console.error(err); throw new Error('No geolocation.'); },
+            (err) => { 
+                commit('setHasError', true);
+                console.error(err); 
+                throw new Error('No geolocation.'); 
+            },
             { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
         );
     },

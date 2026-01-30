@@ -5,6 +5,7 @@ export interface PlacesStateInterface {
     userLocation?: [number, number]; // lng, lat
     isLoadingPlaces: boolean;
     places: Feature[];
+    hasError: boolean;
 }
 
 function state(): PlacesStateInterface {
@@ -12,7 +13,8 @@ function state(): PlacesStateInterface {
         isLoading: true,
         userLocation: undefined,
         isLoadingPlaces: false,
-        places: []
+        places: [],
+        hasError: false
     }
 }
 

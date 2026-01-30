@@ -9,6 +9,12 @@ const mutation: MutationTree<PlacesStateInterface> = {
     setCurrentPosition(state: PlacesStateInterface, coords: GeolocationCoordinates) {
         state.userLocation = [coords.longitude, coords.latitude];
         state.isLoading = false;
+        state.hasError = false;
+    },
+
+    setHasError(state: PlacesStateInterface, status: boolean) {
+        state.hasError = status;
+        state.isLoading = false;
     },
 
     setIsLoadingPlaces(state: PlacesStateInterface, status: boolean) {

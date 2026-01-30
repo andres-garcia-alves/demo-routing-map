@@ -8,7 +8,7 @@ export default defineComponent({
     name: 'MapView',
 
     setup() {
-        const { getUserLocationIsReady, userLocation } = usePlacesStore()
+        const { getUserLocationIsReady, userLocation, hasError } = usePlacesStore()
         const { setMap } = useMapStore()
 
         const mapElement = ref<HTMLDivElement>();
@@ -47,9 +47,6 @@ export default defineComponent({
             }
         )
 
-        return {
-            getUserLocationIsReady,
-            mapElement
-        }
+        return { getUserLocationIsReady, hasError, mapElement }
     }
 })
