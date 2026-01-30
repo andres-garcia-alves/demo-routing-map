@@ -1,33 +1,36 @@
-
 export type MapProvider = 'mapbox' | 'geoapify';
 
-const PROVIDER = (process.env.VUE_APP_MAP_PROVIDER as MapProvider) || 'mapbox';
+const PROVIDER = (import.meta.env.VITE_MAP_PROVIDER as MapProvider) || 'mapbox';
 
-interface MapConfig {
-    provider: MapProvider;
+interface Config {
     accessToken: string;
     baseUrl: string;
     styleUrl: string;
+    provider: MapProvider;
 }
 
-const getMapConfig = (): MapConfig => {
-    if (PROVIDER === 'geoapify') {
-        const apiKey = process.env.VUE_APP_GEOAPIFY_API_KEY || '';
+const getGeoapifyConfig = (): Config => {
+    try {
+        const apiKey = import.meta.env.VITE_GEOAPIFY_API_KEY || '';
         return {
             provider: 'geoapify',
             accessToken: apiKey,
             baseUrl: 'https://api.geoapify.com/v1',
             styleUrl: `https://maps.geoapify.com/v1/styles/osm-bright/style.json?apiKey=${apiKey}`
         };
+    } catch (error) {
+        console.error("Error loading Geoapify config", error);
+        throw error;
     }
+};
 
-    // Default to Mapbox
-    return {
+const mapConfig: Config = PROVIDER === 'geoapify' 
+    ? getGeoapifyConfig()
+    : {
         provider: 'mapbox',
-        accessToken: process.env.VUE_APP_MAPBOX_TOKEN || '',
+        accessToken: import.meta.env.VITE_MAPBOX_TOKEN || '',
         baseUrl: 'https://api.mapbox.com',
         styleUrl: 'mapbox://styles/mapbox/streets-v11'
     };
-};
 
-export const mapConfig = getMapConfig();
+export { mapConfig };
